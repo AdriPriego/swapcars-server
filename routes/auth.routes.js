@@ -89,5 +89,28 @@ router.post("/login", async (req, res, next) => {
     }
 })
 
+router.get("/verify", (req, res, next) => {
+    
+try {
+    console.log(req.headers.authorization)
+
+    const tokenArr = req.headers.authorization.split(" ")
+    console.log(tokenArr)
+
+
+    const tokenType = tokenArr[0]
+    const token = tokenArr[1]
+
+    const payload = jwt.verify(token, process.env.TOKEN_SECRET)
+    
+    
+    res.status(200).json({payload: payload})
+
+} catch (error) {
+    res.sendStatus(401).json({errorMessage: "token no valid or caducate"})
+}
+
+})
+
 
 module.exports = router
