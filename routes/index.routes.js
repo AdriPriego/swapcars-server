@@ -60,6 +60,7 @@ router.get("/cars/:categoryName", async (req, res, next) => {
 
 router.get("/cars/:carId", async (req, res, next) => {
   const carId = req.params.carId
+  console.log(carId)
 
   try {
     const carDetail = await Car.findById(carId)
