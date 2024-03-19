@@ -48,7 +48,7 @@ router.get("/cars", async (req, res, next) => {
   }
 })
 
-router.get("/cars/:categoryName", async (req, res, next) => {
+router.get("/category/:categoryName", async (req, res, next) => {
   try {
     const carCategory = await Car.find({category: req.params.categoryName})
 
