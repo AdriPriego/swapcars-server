@@ -16,7 +16,7 @@ router.use("user",userRouter)
 
 router.post("/cars", async (req, res, next) => {
   const { name, model, category, year, cv, km, price, image, userCar } = req.body
-  const userId = req.params.userId
+  const userId = req.params.userId // final de la clase de auth del backend, para saber de donde viene el usuario logeado
 
   try {
     Car.create({
@@ -121,6 +121,7 @@ router.post("/question/:carId", async (req, res, next) => {
      Question.create({
       question,
       car: carId
+      //añadir el dueño de la pregunta
      })
 
      res.sendStatus(201)
