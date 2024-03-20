@@ -32,7 +32,7 @@ const carSchema = new Schema (
             type: Number,
             required: true
         },
-        image: {
+        imageUrl: {
             type: String,
         },
         userCar: {
