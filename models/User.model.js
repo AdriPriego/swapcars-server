@@ -1,4 +1,4 @@
-const { Schema, model } = require("mongoose");
+const { Schema, model, default: mongoose } = require("mongoose");
 
 
 const userSchema = new Schema(
@@ -21,6 +21,10 @@ const userSchema = new Schema(
     location: {
       type: String,
       required: [true, "Ubicación necesaria"]
+    },
+    favoriteCars: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'Car' 
     }
   },
   {

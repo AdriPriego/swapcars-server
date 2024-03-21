@@ -90,5 +90,49 @@ router.delete("/:carId", isTokenValid, async (req, res, next) => {
     next(error)
   }
 })
+router.post("/:carId/favorite", isTokenValid, async (req, res, next) => {
+  const carId = req.params.carId
 
+  try {
+    
+    const updateCar = await Car.findByIdAndUpdate(carId, {isFavorite: true}, {new: true})
+
+    if (!updateCar) {
+      return res.status(404).json({error: "coche no encontrado"})
+    }
+
+    return res.json(updateCar)
+  } catch (error) {
+    next(error)
+  }
+
+})
+router.delete("/:carId/favorite", isTokenValid, async (req, res, next) => {
+  const carId = req.params.carId
+
+  try {
+    
+    const updateCar = await Car.findByIdAndUpdate(carId, {isFavorite: false}, {new: true})
+
+
+    return res.json(updateCar)
+  } catch (error) {
+    next(error)
+  }
+
+})
+router.get("/:userId/favorite", isTokenValid, async (req, res, next) => {
+  const userId = req.payload._id
+
+
+  try {
+    
+    const favoriteCars = await Car.find({userCar: userId, isFavorite: true})
+
+    res.status(200).json(favoriteCars)
+
+  } catch (error) {
+    next(error)
+  }
+})
 module.exports = router

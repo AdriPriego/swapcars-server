@@ -14,7 +14,7 @@ const carSchema = new Schema (
         category: {
             type: String,
             required: true,
-            enum: ["Suv", "Cabrio", "4x4"]
+            enum: ["Suv", "Cabrio", "4x4", "Coupe", "Berlina", "Pick-Up"]
         },
         year: {
             type: Number,
