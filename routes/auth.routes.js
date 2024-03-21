@@ -2,6 +2,7 @@ const router = require("express").Router()
 const User = require("../models/User.model")
 const bcrypt = require("bcryptjs")
 const jwt = require("jsonwebtoken")
+const {isTokenValid} = require("../middlewares/auth.middlewares")
 
 
 // RUTA PARA REGISTRARSE
@@ -90,28 +91,14 @@ router.post("/login", async (req, res, next) => {
     }
 })
 
-router.get("/verify", (req, res, next) => {
-    
-try {
-    console.log(req.headers.authorization)
+router.get("/verify", isTokenValid, (req, res, next) => {
 
-    const tokenArr = req.headers.authorization.split(" ")
-    console.log(tokenArr)
+    console.log(req.payload)
 
-
-    const tokenType = tokenArr[0]
-    const token = tokenArr[1]
-
-    const payload = jwt.verify(token, process.env.TOKEN_SECRET)
-    
-    
-    res.status(200).json({payload: payload})
-
-} catch (error) {
-    res.sendStatus(401).json({errorMessage: "token no valid or caducate"})
-}
+    res.json(req.payload)
 
 })
+
 
 
 module.exports = router
