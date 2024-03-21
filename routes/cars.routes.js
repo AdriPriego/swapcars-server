@@ -4,7 +4,7 @@ const fileUploader = require("../config/cloudinary.config")
 const {isTokenValid} = require("../middlewares/auth.middlewares")
 
 router.post("/", isTokenValid, async (req, res, next) => {
-  const { name, model, category, year, cv, km, price, imageUrl, userCar } = req.body
+  const { name, model, category, year, cv, km, price, imageUrl, description, userCar } = req.body
   console.log(req.body)
   const userId = req.payload._id
   console.log(req.headers)
@@ -19,6 +19,7 @@ router.post("/", isTokenValid, async (req, res, next) => {
       km,
       price,
       imageUrl,
+      description,
       userCar: userId
     })
 

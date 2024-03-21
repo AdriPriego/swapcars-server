@@ -34,10 +34,14 @@ const carSchema = new Schema (
         },
         imageUrl: {
             type: String,
+            required: true
         },
         isFavorite: {
             type: Boolean,
             default: false
+        },
+        description: {
+            type: String
         },
         userCar: {
             type: mongoose.Schema.Types.ObjectId,
