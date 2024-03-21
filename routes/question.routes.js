@@ -22,7 +22,7 @@ router.post("/:carId", isTokenValid, async (req, res, next) => {
     }
 })
 
-router.put("/:questionId", async (req, res, next) => {
+router.put("/:questionId", isTokenValid, async (req, res, next) => {
     const { question } = req.body
     const questionId = req.params.questionId
 
@@ -38,9 +38,9 @@ router.put("/:questionId", async (req, res, next) => {
     }
 })
 
-//tiene que ser como params
-router.delete("/", async (req, res, next) => {
-    const questionId = req.query.questionId
+
+router.delete("/:questionId", isTokenValid, async (req, res, next) => {
+    const questionId = req.params.questionId
     console.log(questionId)
     try {
 

@@ -53,11 +53,12 @@ router.get("/:carId", async (req, res, next) => {
     next(error)
   }
 })
-router.put("/:carId", async (req, res, next) => {
+router.put("/:carId", isTokenValid, async (req, res, next) => {
   const carId = req.params.carId
   console.log(carId)
 
-  const { name, model, category, year, cv, km, price, image } = req.body
+  const { name, model, category, year, cv, km, price, imageUrl, userCar } = req.body
+  const userId = req.payload._id
 
   try {
     
@@ -69,7 +70,8 @@ router.put("/:carId", async (req, res, next) => {
       cv, 
       km, 
       price, 
-      image
+      imageUrl,
+      userCar: userId
     }, {new: true})
 
     res.status(202).json(response)
@@ -77,7 +79,7 @@ router.put("/:carId", async (req, res, next) => {
     next(error)
   }
 })
-router.delete("/:carId", async (req, res, next) => {
+router.delete("/:carId", isTokenValid, async (req, res, next) => {
   const carId = req.params.carId
 
   try {
