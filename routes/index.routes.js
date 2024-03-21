@@ -11,9 +11,6 @@ router.get("/", (req, res, next) => {
 const authRouter = require("./auth.routes")
 router.use("/auth", authRouter)
 
-const userRouter = require("./user.routes")
-router.use("user",userRouter)
-
 const carRouter = require("./cars.routes")
 router.use("/cars", carRouter)
 

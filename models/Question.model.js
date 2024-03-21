@@ -13,6 +13,9 @@ const questionSchema = new Schema(
     car: {
         type: mongoose.Schema.Types.ObjectId,
         ref: "Car"
+    },
+    userName: {
+        type: String
     }
 }
 )

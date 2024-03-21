@@ -35,6 +35,10 @@ const carSchema = new Schema (
         imageUrl: {
             type: String,
         },
+        isFavorite: {
+            type: Boolean,
+            default: false
+        },
         userCar: {
             type: mongoose.Schema.Types.ObjectId,
             ref: "User"

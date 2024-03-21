@@ -7,13 +7,15 @@ router.post("/:carId", isTokenValid, async (req, res, next) => {
     const { question } = req.body
     const carId = req.params.carId
     const userId = req.payload._id
+    const userName = req.payload.name
 
     try {
 
         Question.create({
             question,
             car: carId,
-            user: userId
+            user: userId,
+            userName: userName
         })
 
         res.sendStatus(201)
