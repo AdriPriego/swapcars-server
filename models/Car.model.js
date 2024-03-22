@@ -9,7 +9,7 @@ const carSchema = new Schema (
         model: {
             type: String,
             required: true,
-            enum: ["Toyota", "Ford", "Seat", "Suzuki", "Renault", "Tesla", "Mercedes", "Ferrari"]
+            enum: ["Toyota", "Ford", "Seat", "Suzuki", "Renault", "Tesla", "Mercedes", "Ferrari", "Volkswagen", "Nissan", "Bmw", "Audi", "Skoda"]
         },
         category: {
             type: String,
